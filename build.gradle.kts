@@ -45,6 +45,10 @@ dependencies {
 	// JasperReports
 	implementation ("net.sf.jasperreports:jasperreports:6.20.0")
 	implementation ("net.sf.jasperreports:jasperreports-fonts:6.20.0")
+
+	// UUIDv7 with created time sorting
+	implementation("com.github.f4b6a3:uuid-creator:5.3.6")
+
 }
 
 tasks.withType<Test> {
