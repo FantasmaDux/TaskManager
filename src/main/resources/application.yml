@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: TaskManager
+  datasource:
+    url: jdbc:postgresql://task-manager-db:5432/task-manager-db
+    username: postgres
+    password: 267115
+
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
