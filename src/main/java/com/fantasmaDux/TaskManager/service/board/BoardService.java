@@ -4,6 +4,7 @@ import com.fantasmaDux.TaskManager.api.dto.request.BoardCreationRequestDto;
 import com.fantasmaDux.TaskManager.api.dto.request.BoardUpdateRequestDto;
 import com.fantasmaDux.TaskManager.api.dto.response.BoardResponseDto;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface BoardService {
@@ -15,4 +16,7 @@ public interface BoardService {
     BoardResponseDto updateBoardById(UUID boardId, BoardUpdateRequestDto newBoard);
 
     void deleteBoardById(UUID boardId);
+
+    List<BoardResponseDto> getBoardsByUserId(UUID userId);
+
 }
