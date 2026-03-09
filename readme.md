@@ -32,6 +32,12 @@
 ### Swagger
 Swagger доступен по адресу http://localhost:8080/swagger-ui/index.html
 
+### Keycloak
+Keycloak доступен по адресу http://localhost:8180
+- Логин: admin
+- Пароль: admin
+
+
 ## Лицензия
 
 [MIT](https://choosealicense.com/licenses/mit/)
