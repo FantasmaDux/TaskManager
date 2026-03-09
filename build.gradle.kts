@@ -45,6 +45,15 @@ dependencies {
 	// JasperReports
 	implementation ("net.sf.jasperreports:jasperreports:6.20.0")
 	implementation ("net.sf.jasperreports:jasperreports-fonts:6.20.0")
+
+	// UUIDv7 with created time sorting
+	implementation("com.github.f4b6a3:uuid-creator:5.3.6")
+
+	// For DTO <-> Entity mapping
+	implementation ("org.mapstruct:mapstruct:1.5.5.Final")
+	annotationProcessor ("org.mapstruct:mapstruct-processor:1.5.5.Final")
+	annotationProcessor ("org.projectlombok:lombok-mapstruct-binding:0.2.0")
+
 }
 
 tasks.withType<Test> {
