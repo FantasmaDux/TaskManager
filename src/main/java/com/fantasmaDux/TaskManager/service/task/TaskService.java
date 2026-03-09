@@ -3,7 +3,6 @@ package com.fantasmaDux.TaskManager.service.task;
 import com.fantasmaDux.TaskManager.api.dto.request.TaskCreationRequestDto;
 import com.fantasmaDux.TaskManager.api.dto.request.TaskUpdateRequestDto;
 import com.fantasmaDux.TaskManager.api.dto.response.TaskResponseDto;
-import com.fantasmaDux.TaskManager.store.model.TaskEntity;
 
 import java.util.List;
 import java.util.UUID;
