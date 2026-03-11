@@ -45,11 +45,14 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
     restart: unless-stopped
+    volumes:
+      - keycloak-data:/opt/keycloak/data/h2
     networks:
       - task-manager-network
 
 volumes:
   task-manager-backend-db:
+  keycloak-data:
 
 networks:
   task-manager-network:
