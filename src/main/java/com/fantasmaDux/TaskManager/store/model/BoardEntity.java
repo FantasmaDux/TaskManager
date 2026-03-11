@@ -29,8 +29,8 @@ public class BoardEntity {
     private String title;
     private String description;
 
-    @ManyToOne
-    @Column(nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", nullable = false)
     private UserEntity author;
 
     @OneToMany(mappedBy = "board", cascade=CascadeType.ALL, orphanRemoval = true)

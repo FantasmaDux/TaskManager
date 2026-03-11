@@ -2,7 +2,7 @@ spring:
   application:
     name: TaskManager
   datasource:
-    url: jdbc:postgresql://task-manager-db:5432/task-manager-db
+    url: jdbc:postgresql://task-manager-backend-db:5432/task-manager-backend-db
     username: postgres
     password: 267115
 
