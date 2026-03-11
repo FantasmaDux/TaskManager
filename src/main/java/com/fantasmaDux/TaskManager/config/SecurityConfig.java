@@ -1,6 +1,7 @@
 package com.fantasmaDux.TaskManager.config;
 
 import com.fantasmaDux.TaskManager.util.KeycloakJwtAuthenticationConverter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,7 +11,10 @@ import org.springframework.security.web.SecurityFilterChain;
 import static org.apache.catalina.webresources.TomcatURLStreamHandlerFactory.disable;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+    private final KeycloakJwtAuthenticationConverter keycloakJwtAuthenticationConverter;
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -32,7 +36,7 @@ public class SecurityConfig {
 
     private JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
-        converter.setJwtGrantedAuthoritiesConverter(new KeycloakJwtAuthenticationConverter());
+        converter.setJwtGrantedAuthoritiesConverter(keycloakJwtAuthenticationConverter);
         return converter;
     }
 }

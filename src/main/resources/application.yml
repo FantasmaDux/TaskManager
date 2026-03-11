@@ -18,3 +18,10 @@ spring:
         jwt:
           issuer-uri: http://keycloak:8080/realms/task-manager
           jwk-set-uri: http://keycloak:8080/realms/task-manager/protocol/openid-connect/certs
+
+keycloak:
+  auth-server-url: http://localhost:8180
+  realm: task-manager
+  resource: task-manager-client
+  credentials:
+    secret:
