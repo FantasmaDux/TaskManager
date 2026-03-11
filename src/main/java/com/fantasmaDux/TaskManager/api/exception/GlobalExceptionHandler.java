@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
 
     }
 
-    @ExceptionHandler(BoardNotFoundException.class)
+    @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<StandardApiResponse<Object>> handleUserNotFoundException(BoardNotFoundException e) {
         log.warn("User not found: {}", e.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND)

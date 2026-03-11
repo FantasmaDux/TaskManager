@@ -18,6 +18,10 @@ services:
     image: postgres:17-alpine
     ports:
       - "5555:5432"
+    environment:
+      POSTGRES_DB: task-manager-backend-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 267115
     healthcheck:
       test: [ "CMD-SHELL", "sh -c 'pg_isready -U postgres -d task-manager-backend-db'" ]
       interval: 1s
