@@ -35,6 +35,13 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
+	// Security
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	testImplementation("org.springframework.boot:spring-boot-starter-security-test")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+	implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+	implementation("org.keycloak:keycloak-admin-client:24.0.0")
+
 	// GWT Integration
 	implementation ("org.jadice.gwt.spring:gwt-spring-boot-starter:2.2.6")
 

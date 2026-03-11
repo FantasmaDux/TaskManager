@@ -12,3 +12,9 @@ spring:
       ddl-auto: update
     show-sql: true
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/realms/task-manager
+          jwk-set-uri: http://keycloak:8080/realms/task-manager/protocol/openid-connect/certs
