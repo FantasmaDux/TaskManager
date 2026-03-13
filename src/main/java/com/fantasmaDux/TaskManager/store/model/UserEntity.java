@@ -26,6 +26,9 @@ public class UserEntity {
     }
 
     @Column(nullable = false)
+    private UUID keycloakId;
+
+    @Column(nullable = false)
     private String firstName;
     @Column(nullable = false)
     private String lastName;
