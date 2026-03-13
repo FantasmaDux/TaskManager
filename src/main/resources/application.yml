@@ -20,8 +20,10 @@ spring:
           jwk-set-uri: http://keycloak:8080/realms/task-manager/protocol/openid-connect/certs
 
 keycloak:
-  auth-server-url: http://localhost:8180
+  auth-server-url: http://keycloak:8080
   realm: task-manager
   resource: task-manager-client
   credentials:
-    secret:
+    # из clients -> task-manager-client -> Credentials
+    # при появлении 401 в первую очередь лезем проверять, верен ли secret
+    secret: yNEGVJRDryuRfgz5pfwfmPd1AeZSnsB7

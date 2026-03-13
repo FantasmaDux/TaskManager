@@ -38,7 +38,7 @@ services:
   keycloak:
     container_name: keycloak
     image: quay.io/keycloak/keycloak:24.0
-    command: start-dev
+    command: start-dev --import-realm
     ports:
       - "8180:8080"
     environment:
@@ -46,7 +46,9 @@ services:
       KEYCLOAK_ADMIN_PASSWORD: admin
     restart: unless-stopped
     volumes:
-      - keycloak-data:/opt/keycloak/data/h2
+#      до двоеточия папка с json, которую монтируем в директорию после двоеточия
+      - ./keycloak:/opt/keycloak/data/import
+      - keycloak-data:/opt/keycloak/data
     networks:
       - task-manager-network
 
