@@ -2,7 +2,9 @@ package com.fantasmaDux.TaskManager.store.model;
 
 import com.fantasmaDux.TaskManager.store.enums.PriorityEnum;
 import com.fantasmaDux.TaskManager.store.enums.StatusEnum;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import com.github.f4b6a3.uuid.UuidCreator;

@@ -1,5 +1,6 @@
-package com.fantasmaDux.TaskManager.clientGwt;
+package com.fantasmaDux.TaskManager.client;
 
+import com.fantasmaDux.TaskManager.api.ApiEndpoint;
 import com.google.gwt.http.client.*;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONString;
@@ -15,7 +16,8 @@ public class AuthPanel extends VerticalPanel {
 
     private final GwtEntryPoint gwtEntryPoint;
 
-    public AuthPanel(final GwtEntryPoint gwtEntryPoint) {
+    public AuthPanel(GwtEntryPoint gwtEntryPoint) {
+
         this.gwtEntryPoint = gwtEntryPoint;
 
         setSpacing(5);
@@ -56,7 +58,7 @@ public class AuthPanel extends VerticalPanel {
         json.put("password", new JSONString(password));
 
 
-        RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, "/api/v1/auth/register");
+        RequestBuilder builder = new RequestBuilder(RequestBuilder.POST, ApiEndpoint.REGISTER);
         builder.setHeader("Content-Type", "application/json");
 
         try {
@@ -65,6 +67,8 @@ public class AuthPanel extends VerticalPanel {
                 public void onResponseReceived(Request request, Response response) {
                     if (response.getStatusCode() == 200) {
                         Window.alert("Registration successful!");
+                        gwtEntryPoint.checkLogin();
+
                     } else {
                         Window.alert("Error: " + response.getText());
                     }

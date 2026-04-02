@@ -1,6 +1,6 @@
 # Приложение TaskManager
 ![GitHub Created At](https://img.shields.io/github/created-at/FantasmaDux/shoppingCart?color=bright-green&style=flat-square)
-![Java 21](https://img.shields.io/badge/Java-17-brightgreen?style=flat-square&logo=java&logoColor=white)
+![Java 15](https://img.shields.io/badge/Java-17-brightgreen?style=flat-square&logo=java&logoColor=white) (для GWT понижена версия)
 ![Swagger](https://img.shields.io/badge/Swagger-3-brightgreen?style=flat-square&logo=swagger&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3-brightgreen?style=flat-square&logo=springboot&logoColor=white)
 ![Spring Security](https://img.shields.io/badge/Spring%20Security-6-brightgreen?style=flat-square&logo=springsecurity&logoColor=white)
@@ -25,8 +25,22 @@
   ![Apache POI]()
   ![JasperReports]()
 
-### Запуск проекта
+### Про GWT
 
+Точно работает с Java 15. С Java 21 не запускается, так как не может найти EntryPoint.
+
+Особенности:
+- не работает с time.*
+- требует, чтобы все enum находились в папке client, доступной в конфигурации
+
+Для компиляции фронтенда:
+```
+./gradlew gwtCompile
+```
+
+После чего можно запускать приложение.
+
+### Запуск проекта
 
 ## API
 ### Swagger

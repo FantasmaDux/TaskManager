@@ -20,11 +20,14 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(
+                        .antMatchers(
                                 "/api/v1/auth/**",
                                 "/api/v1/public/**",
                                 "/swagger-ui/**",
-                                "/v3/api-docs/**"
+                                "/v3/api-docs/**",
+                                "/",                      // главная страница
+                                "/index.html",             // html файл
+                                "/taskmanager/**"
                         ).permitAll()
                         .anyRequest().authenticated()
                 ).oauth2ResourceServer(oauth2 -> oauth2

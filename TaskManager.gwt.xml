@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module rename-to="taskmanager">
-    <entry-point class='com.fantasmaDux.TaskManager.clientGwt.GwtEntryPoint'/>
-    <source path='clientGwt'/>
-    <inherits name='com.google.gwt.user.User'/>
-</module>

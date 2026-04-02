@@ -1,6 +1,6 @@
-package com.fantasmaDux.TaskManager.clientGwt;
+package com.fantasmaDux.TaskManager.client;
 
-import com.fantasmaDux.TaskManager.api.dto.response.BoardResponseDto;
+import com.fantasmaDux.TaskManager.api.ApiEndpoint;
 import com.google.gwt.http.client.*;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
@@ -32,7 +32,7 @@ public class BoardsPanel extends VerticalPanel {
 
         RequestBuilder builder =
                 new RequestBuilder(RequestBuilder.GET,
-                        "/api/v1/boards/user/" + userId);
+                        ApiEndpoint.BOARDS_BY_USER + userId);
 
         try {
 

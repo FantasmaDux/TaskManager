@@ -10,10 +10,10 @@ import com.fantasmaDux.TaskManager.store.model.BoardEntity;
 import com.fantasmaDux.TaskManager.store.model.UserEntity;
 import com.fantasmaDux.TaskManager.store.repository.BoardRepository;
 import com.fantasmaDux.TaskManager.store.repository.UserRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;

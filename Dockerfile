@@ -1,4 +1,4 @@
-FROM gradle:8.7-jdk21-alpine AS build
+FROM adoptopenjdk:15-jdk-hotspot AS build
 
 LABEL authors="Rus"
 
@@ -8,7 +8,7 @@ WORKDIR /home/gradle/project
 COPY --chown=gradle:gradle gradlew ./
 COPY --chown=gradle:gradle gradle ./gradle
 
-COPY --chown=gradle:gradle build.gradle.kts settings.gradle.kts ./
+COPY --chown=gradle:gradle build.gradle settings.gradle.kts ./
 
 # Кэшируем зависимости
 RUN ./gradlew dependencies --no-daemon || true
@@ -20,7 +20,7 @@ COPY --chown=gradle:gradle src ./src
 RUN ./gradlew bootJar --no-daemon
 
 # Финальный контейнер
-FROM eclipse-temurin:21-jdk-alpine
+FROM adoptopenjdk:15-jdk-hotspot
 
 WORKDIR /app
 

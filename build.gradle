@@ -1,0 +1,92 @@
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath 'org.wisepersist:gwt-gradle-plugin:1.0.6'
+	}
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.18'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+apply plugin: 'gwt'
+
+group = 'com.fantasmaDux'
+version = '0.0.1-SNAPSHOT'
+description = 'Simple task manager for small teams with export and report'
+
+sourceCompatibility = '15'
+targetCompatibility = '15'
+
+repositories {
+	mavenCentral()
+	maven { url = 'https://repo.spring.io/milestone' }
+	maven { url = 'https://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts/' }
+	maven { url = 'https://jaspersoft.jfrog.io/jaspersoft/jaspersoft/' }
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	// Security
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+	implementation 'org.keycloak:keycloak-admin-client:19.0.3'
+
+	// GWT
+	compileOnly "com.google.gwt:gwt-user:2.10.0"
+	compileOnly "com.google.gwt:gwt-dev:2.10.0"
+	compileOnly 'org.fusesource.restygwt:restygwt:2.2.3'
+
+	// Apache POI
+	implementation 'org.apache.poi:poi:5.3.0'
+	implementation 'org.apache.poi:poi-ooxml:5.3.0'
+
+	// JasperReports
+	implementation 'net.sf.jasperreports:jasperreports:6.20.0'
+	implementation 'net.sf.jasperreports:jasperreports-fonts:6.20.0'
+
+	// UUIDv7
+	implementation 'com.github.f4b6a3:uuid-creator:5.3.6'
+
+	// MapStruct
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+}
+
+gwt {
+	gwtVersion = "2.10.0"
+	modules "com.fantasmaDux.TaskManager.TaskManager"
+	maxHeapSize = "2048M"
+}
+
+compileJava.dependsOn processResources
+
+bootJar.dependsOn compileGwt
+bootJar {
+	into('BOOT-INF/classes/static') {
+		from compileGwt.outputs
+	}
+}
+
+test {
+	useJUnitPlatform()
+}

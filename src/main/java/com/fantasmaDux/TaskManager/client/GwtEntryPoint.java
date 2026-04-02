@@ -1,5 +1,6 @@
-package com.fantasmaDux.TaskManager.clientGwt;
+package com.fantasmaDux.TaskManager.client;
 
+import com.fantasmaDux.TaskManager.api.ApiEndpoint;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.http.client.*;
 import com.google.gwt.json.client.JSONObject;
@@ -11,18 +12,24 @@ public class GwtEntryPoint implements EntryPoint {
 
     private DeckPanel mainDeck = new DeckPanel();
 
+    private static final int AUTH_SCREEN = 0;
+    private static final int BOARDS_SCREEN = 1;
+
+    private AuthPanel authPanel;
     private BoardsPanel boardsPanel;
+    private TasksPanel tasksPanel;
     private String userId;
 
     @Override
     public void onModuleLoad() {
-        AuthPanel authPanel = new AuthPanel(this);
+        authPanel = new AuthPanel(this);
         boardsPanel = new BoardsPanel(this);
-//        TasksPanel tasksPanel = new TasksPanel(this);
+        tasksPanel = new TasksPanel(this);
 
+        // порядок добавления важен
         mainDeck.add(authPanel);
         mainDeck.add(boardsPanel);
-//        mainDeck.add(tasksPanel);
+        mainDeck.add(tasksPanel);
 
 
         RootPanel.get().add(mainDeck);
@@ -31,9 +38,9 @@ public class GwtEntryPoint implements EntryPoint {
 
     }
 
-    private void checkLogin() {
+    public void checkLogin() {
         RequestBuilder builder =
-                new RequestBuilder(RequestBuilder.GET, "/api/v1/auth/me");
+                new RequestBuilder(RequestBuilder.GET, ApiEndpoint.ME);
 
         try {
             builder.sendRequest(null, new RequestCallback() {
@@ -67,16 +74,17 @@ public class GwtEntryPoint implements EntryPoint {
         }
     }
 
-    public void showBoards(String userId) {
+    private void showBoards(String userId) {
         boardsPanel.loadBoards(userId);
         mainDeck.showWidget(1);
     }
 
-    public void showTasks(String boardId) {
+    protected void showTasks(String boardId) {
+        tasksPanel.loadTasksByBoard(boardId);
         mainDeck.showWidget(2);
     }
 
-    public void showAuth() {
-        mainDeck.showWidget(0);
+    private void showAuth() {
+        mainDeck.showWidget(AUTH_SCREEN);
     }
 }
